@@ -1,0 +1,295 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>jQuery One Page Scroll by Pete R. | The Pete Design</title>
+	<meta name="title" content="jQuery One Page Scroll by Pete R. | The Pete Design" />
+	<meta name="description" content="Create an Apple-like one page scroller website (iPhone 5S website) with One Page Scroll plugin" />
+
+<!-- 	<meta content="http://www.thepetedesign.com/demos/onepage_scroll_demo.html" property="og:url" />
+	<meta content="http://www.thepetedesign.com/images/onepage_scroll_image.png" property="og:image" />
+	<link rel="shortcut icon" id="favicon" href="favicon.png">  -->
+	<meta name="author" content="Pete R.">
+	<!-- <link rel="canonical" href="http://www.thepetedesign.com/demos/onepage_scroll_demo.html" /> -->
+	
+	<script src="js/prefixfree.min.js"></script>
+	
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,700' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Pacifico:400' rel='stylesheet' type='text/css'>
+		<link rel='stylesheet prefetch' href='http:////netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.css'>
+	  <link href='http://fonts.googleapis.com/css?family=Roboto:100,400,300,500,700' rel='stylesheet' type='text/css'>
+	
+	<link rel="stylesheet" href="css/dev.css" media="screen" type="text/css" />    
+    <link rel="stylesheet" href="css/change.css" media="screen" type="text/css" />
+    
+    <link rel="stylesheet" href="css/style.css" type='text/css'>
+	
+	<link rel="stylesheet" href="css/anitxt.css" media="screen" type="text/css" />
+	<link href='http://fonts.googleapis.com/css?family=Muli' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="css/main/main.css" media="screen" type="text/css" />	
+	<link rel="stylesheet" href="css/intro.css" media="screen" type="text/css" />
+	<link rel="stylesheet" href="css/whoami.css" media="screen" type="text/css" />
+	<link href='css/main/onepage-scroll.css' rel='stylesheet' type='text/css'>
+	
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="js/main/jquery.onepage-scroll.js"></script>
+    <meta name="viewport" content="initial-scale=1, width=device-width, maximum-scale=1, minimum-scale=1, user-scalable=no">
+ 
+	<script>
+	  $(document).ready(function(){
+	      $(".main").onepage_scroll({
+	        sectionContainer: "section",
+	        responsiveFallback: 600,
+	        loop: true
+	      });
+	  });
+	  
+	</script>
+	
+	<script> 
+	$(document).ready(function(){
+		bgImageTotal=30;
+		randomNumber = Math.round(Math.random()*(bgImageTotal-1))+1;
+		imgPath1=('images/background/'+randomNumber+'.jpg');
+		$('#p1').css('background-image', ('url("'+imgPath1+'")'));
+		
+		randomNumber2 = Math.round(Math.random()*(bgImageTotal-1))+1;
+		imgPath2=('images/background/'+randomNumber2+'.jpg');
+		$('#p5').css('background-image', ('url("'+imgPath2+'")'));
+
+		imgPath3=('img/e84c3d.jpg');
+		$('#p4').css('background-image',('url("'+imgPath3+'")'));
+		
+	});
+</script>
+	<script>
+  //로그인시 빈칸 일 경우 알람
+  function check(form){
+	  if(document.loginch.email.value=="e-mail"){
+		   alert("아이디를 입력하세요.");
+		   document.loginch.email.focus();
+		   return false;
+	 }
+	  if(document.loginch.pw.value=="Password"){
+		   alert("비밀번호를 입력하세요.");
+		   document.loginch.pw.focus();
+		   return false;
+	 }
+	  return true;  
+  }
+  //회원가입시 빈칸 일 경우 알람
+  function check2(form){
+	  if(document.signin.email2.value=="e-mail"){
+		   alert("이메일을 입력하세요.");
+		   document.signin.email2.focus();
+		   return false;
+	 }
+	if(document.signin.name2.value=="name"){
+		   alert("이름을 입력하세요.");
+		   document.signin.name2.focus();
+		   return false;
+	 }
+	if(document.signin.pw2.value=="Password"){
+		   alert("비밀번호를 입력하세요.");
+		   document.signin.pw2.focus();
+		   return false;
+	 }
+	return true;
+  }
+  </script>
+  
+    <script type="text/javascript">
+    //회원가입시 메일주소 형태 검사
+    $(document).ready(function(){    	
+    	$("#name2").focus(function(){
+    		 var regex=/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
+        	 var e = document.signin.email2.value;
+    		if(regex.test(e)===false){
+    			   alert("잘못된형식의 메일주소입니다.");
+    			   document.signin.email2.focus();
+    			   return false;
+    			   }   		
+    	})
+    	$("#pw").focus(function(){
+    		 var regex2=/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
+        	 var b = document.loginch.email.value;
+    		if(regex2.test(b)===false){
+    			   alert("잘못된형식의 메일주소입니다.");
+    			   document.loginch.email.focus();
+    			   return false;
+    			   }   		
+    	})
+    })
+    </script>
+</head>
+<body>
+  <div class="wrapper">
+	  <div class="main">
+	    
+      <section class="page1" id="p1">
+        <div class="page_container">
+             <div class="container">
+                <div align="center" >
+                   <div id="login" class="fadeInSlideUp">
+                   <!-- *** 로그인 폼 *** --> 
+		    <form name="loginch" action=idCheck.do method="post" class="login-form" onsubmit="return check(this);">
+				          <fieldset class="clearfix">
+				            <span><i class="fa fa-user"></i></span><input type="text" id="email" name="email" value="e-mail" onBlur="if(this.value == '') this.value = 'e-mail'" onFocus="if(this.value == 'e-mail') this.value = ''" required/>
+				            <span><i class="fa fa-lock"></i></span><input type="password"  id="pw" name="pw" value="Password" onBlur="if(this.value == '') this.value = 'Password'" onFocus="if(this.value == 'Password') this.value = ''" required> 
+				            <input type="submit" value="Sign In">
+				            <input type="submit" value="Sign Up" style="margin-top: -13px;">
+				
+				          </fieldset>
+				
+				        </form>
+				      </div> <!-- end login -->
+                </div>
+                </div>
+        </div>
+      </section>
+	    
+	    <section class="page2" id="p2">
+	      	<div class="clock">
+	      	<div class="time">14:56:03</div>
+					<div class='content'>
+  					 <div class='visible'>
+					    <p>
+					      Time
+					    </p>
+					    <ul>
+					      <li>makes </li>
+					      <li>time </li>
+					      <li>special!</li>
+					    </ul>
+					  </div>
+					</div>
+			</div>
+      </section>
+	    
+	    <section class="page3" id="p3" width="100%" height="100%">
+	      	<!-- <iframe width="100%" height="100%" src="intro.html"></iframe> -->
+      </section>
+      <section class="page4" id="p4">
+      	<br><br><br><br><br><br>
+      		<center>
+      			<nav><a><span>Developers</span></a></nav>
+      		</center>
+      			<br><br><br><br><br><br><br>
+	      		<center>
+					<table>
+						<tr>
+							<td width=280 height=280>
+								<div class="first_circle"></div>
+									<div class="first_div">
+										<div class="second_div">
+											<div class="img_div">
+												<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/173024/img_welcome.png">
+											</div>
+										</div>
+									</div>
+									<br>
+										<h2 class = "rw-sentence">
+         						 	<span>Who am I?<br />  I'm</span>
+									<div class="rw-words rw-words-1">
+										<span>a PM.</span>
+										<span>a Woong-E.</span>
+										<span>a man.</span>
+										<span>a boy.</span>
+										<span>a HyunWoo.</span>
+										</div>
+									</h2>
+								</td>
+									<td width=280 height=280>
+								<div class="first_circle"></div>
+									<div class="first_div">
+										<div class="second_div">
+											<div class="img_div">
+												<img src="img/test2.png">
+											</div>
+										</div>
+									</div>
+									<br>
+									<h2 class="rw-sentence">
+	         						 <span>Who am I?<br />  I'm</span>
+									<div class="rw-words rw-words-1">
+										<span>JeongJae.</span>
+										<span>an<br>&nbsp;UI specialist.</span>
+										<span>a Landscape<br>&nbsp;Architect.</span>
+										<span>a citizen.</span>
+										<span>sleeping.</span>
+									</div>
+									</h2>
+							</td>
+									<td width=280 height=280>
+									<div class="first_circle"></div>
+									<div class="first_div">
+										<div class="second_div">
+											<div class="img_div">
+												<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/173024/img_welcome.png">
+											</div>
+										</div>
+									</div>
+									<br>
+									<h2 class="rw-sentence">
+	         						 <span>Who am I?<br />  I'm</span>
+									<div class="rw-words rw-words-1">
+										<span>a PM.</span>
+										<span>a Woong-E.</span>
+										<span>a man.</span>
+										<span>a boy.</span>
+										<span>a HyunWoo.</span>
+									</div>
+									</h2>
+								</div>
+								</td>
+									<td width=280 height=280>
+									<div class="first_circle"></div>
+									<div class="first_div">
+										<div class="second_div">
+											<div class="img_div">
+												<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/173024/img_welcome.png">
+											</div>
+										</div>
+									</div>
+									<br>
+									<h2 class="rw-sentence">
+	         						 <span>Who am I?<br />  I'm</span>
+									<div class="rw-words rw-words-1">
+										<span>a PM.</span>
+										<span>a Woong-E.</span>
+										<span>a man.</span>
+										<span>a boy.</span>
+										<span>a HyunWoo.</span>
+									</div>
+									</h2>
+									</td>
+									</tr>						
+					</table></center><!--팀원소개 -->
+      </section>
+      
+      <section class="page5" id="p5">
+	      <div class="page_container">
+	       <div class="container2">
+   			 <!-- *** 회원가입 폼 *** -->           
+                <div align="center">
+                   <div id="login" class="fadeInSlideUp">
+				        <form name="signin" action="insert.do" method="post" class="login-form" onsubmit="return check2(this);">
+				          <fieldset class="clearfix">
+				            <span><i class="fa fa-envelope"></i></span><input type="text" id="email2" name="email2" value="e-mail" onBlur="if(this.value == '') this.value = 'e-mail'" onFocus="if(this.value == 'e-mail') this.value = ''" required/><br> 
+				            <span><i class="fa fa-user"></i></span><input type="text"  id="name2" name="name2" value="name" onBlur="if(this.value == '') this.value = 'name'" onFocus="if(this.value == 'name') this.value = ''" required/><br>
+				            <span><i class="fa fa-lock"></i></span><input type="password" id="pw2" name="pw2" value="Password" onBlur="if(this.value == '') this.value = 'Password'" onFocus="if(this.value == 'Password') this.value = ''" required/> 
+				            <input type="submit" value="Sign Up">
+				          </fieldset>
+				        </form>
+				      </div> <!-- end login -->
+                </div>
+          </div>
+  	    </div>
+      </section>
+    </div>
+  </div>
+  	<script src="js/change.js"></script>
+  	<script src="js/whoami.js"></script>
+  	<script src="js/anitxt.js"></script>
+</body>
+</html>

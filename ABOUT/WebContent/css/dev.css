@@ -1,0 +1,36 @@
+@CHARSET "EUC-KR";
+@import url(http://fonts.googleapis.com/css?family=Kite+One);
+
+$tan : #EEEBD7;
+$black : #050608;
+$red : #E31F27;
+$yellow : #EFB31D;
+$green : #008144;
+$blue : #00A1CB;
+
+html { font-size:125%; }
+
+html, body { height:100%; }
+body {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:$tan;
+}
+
+nav a {
+  font:3rem/1.75 "Kite One", sans-serif;
+  display:inline-block;
+  text-align:center;
+  padding:0 1.5rem;
+  box-shadow:0 2rem 0 -1.5rem;
+  transition:.2s;
+  &:hover {
+    box-shadow:0 .5rem;
+  }
+  &:first-child { color:$red; }
+  &:nth-child(2) { color:$yellow; }
+  &:nth-child(3) { color:$blue; }
+}
+
+nav span { color: $black; }

@@ -1,0 +1,89 @@
+@import url(http://fonts.googleapis.com/css?family=Merriweather);
+@import url(http://www.markmurray.co/codepen/entypostyle.css);
+body {
+  padding: 1em;
+  background: #1a242f;
+  font-family: Merriweather, serif;
+}
+
+section {
+	padding:20px;
+  -moz-column-width: 15em;
+  -webkit-column-width: 15em;
+  column-width: 15em;
+  -moz-column-gap: 1em;
+  -webkit-column-gap: 1em;
+  column-gap: 1em;
+}
+section .block:hover .links {
+  visibility: visible;
+}
+section img {
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+  margin-bottom: -3px;
+}
+section .caption {
+  background: #273646;
+  text-align: center;
+  color: white;
+  padding: 20px 0 0 0;
+  margin-bottom: 1em;
+  text-transform: lowercase;
+  position: relative;
+}
+section .caption:before {
+  content: '';
+  width: 15px;
+  height: 15px;
+  background: #273646;
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  position: absolute;
+  left: 2em;
+  top: -7.5px;
+}
+section .caption .links {
+  margin-top: 1em;
+  visibility: hidden;
+}
+section .caption .links i {
+  display: inline;
+  width: 33.3333%;
+  float: left;
+  padding: 10px 0;
+  background: red;
+  margin: 0;
+  border: 0;
+  cursor: pointer;
+}
+section .caption .links i:hover {
+  background: white !important;
+  color: #2c3e50;
+}
+section .caption .links i:nth-child(1) {
+  background: #3b5998;
+}
+section .caption .links i:nth-child(2) {
+  background: #00a0d1;
+}
+section .caption .links i:nth-child(3) {
+  background: #c8232c;
+}
+section .caption .cf{
+	height: 500px;
+}
+ .cf:before,
+.cf:after {
+  content: " ";
+  1
+  display: table;
+  2
+} 
+
+ .cf:after {
+  clear: both;
+} 

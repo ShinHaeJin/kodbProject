@@ -1,0 +1,68 @@
+
+iframe{
+	border: none;
+	padding: 0px;
+}
+
+#uptable1, #uptable2{
+	border:solid;
+	border-color:#d4d4d4;
+	width:500px;
+	min-height:300px;
+	height:auto;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;	  	
+}
+
+#upI_td1, #upV_td1{
+	height: 40px;
+	border-bottom: dashed;
+	border-color: #d4d4d4;
+}
+
+#upI_td2, #upV_td2{
+	height: auto;
+	border-bottom: dashed;
+	border-color: #d4d4d4;
+	background-color: #f7f7f7;
+}
+
+#upI_td3, #upV_td3{
+	height: 40px;
+}
+div.upload1 {
+	margin-left:150px;
+	
+    width: 150px;
+    height: 150px;
+    background: url(../images/photoplus.png);
+    overflow: hidden;
+}
+div.upload2 {
+	margin-left:150px;
+	
+    width: 150px;
+    height: 150px;
+    background: url(../images/videoplus.png);
+    overflow: hidden;
+}
+div.upload1 input {
+    display: block !important;
+    width: 150px !important;
+    height: 150px !important;
+    opacity: 0 !important;
+    overflow: hidden !important;
+}
+
+div.upload2 input {
+    display: block !important;
+    width: 150px !important;
+    height: 150px !important;
+    opacity: 0 !important;
+    overflow: hidden !important;
+}
+
+#videoUp {
+	/* visibility: hidden; */
+}

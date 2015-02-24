@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="photo">
+	<resultMap type="photoDTO" id="photoResult">
+		<result column="seq_pkey" property="pKey" />
+		<result column="p_name" property="pName" />
+		<result column="p_size" property="pSize" />
+		<result column="p_path" property="pPath" />
+		<result column="p_year" property="pYear" />
+		<result column="p_month" property="pMonth" />
+		<result column="p_day" property="pDay" />
+		<result column="p_comment" property="pComment" />
+		<result column="email" property="email" />
+	</resultMap>
+
+	<insert id="uploadPhoto" parameterType="photoDTO">
+		INSERT INTO photo
+		VALUES(PHOTO_SQ.NEXTVAL, #{pName}, #{pSize}, #{pPath},#{pYear}, #{pMonth},#{pDay}, #{pComment}, #{email})
+	</insert>
+	
+	<select id="selectFileNum" parameterType="String" resultType="Integer">
+		SELECT seq_pkey 
+		FROM photo 
+		WHERE p_name=#{pName}
+	</select>
+	
+	<select id="selectPhotoByMonth" parameterType="String" resultMap="photoResult">
+		SELECT *
+		FROM photo
+		WHERE p_month=#{pMonth} 
+		ORDER BY p_month asc, p_year desc
+	</select>
+	
+	<select id="selectPhotoByYear" parameterType="String" resultMap="photoResult">
+		SELECT *
+		FROM photo
+		WHERE p_year=#{pYear}
+		ORDER BY p_year desc, p_month asc
+	</select>
+	
+	<select id="selectPhotoByYearMonth" parameterType="photoDTO" resultMap="photoResult">
+		SELECT *
+		FROM photo
+		WHERE p_year=#{pYear} and p_month=#{pMonth}
+		ORDER BY p_day
+	</select>
+	
+	<select id="selectPhotoByMonthOne" parameterType="String" resultMap="photoResult">
+		SELECT p_path, p_year, p_month
+		FROM photo
+		WHERE seq_pKey in
+		(SELECT MAX(seq_pKey)
+		FROM photo
+		GROUP BY p_year, p_month)
+		ORDER BY p_year desc, p_month asc
+	</select>
+	
+	<select id="selectAllPhoto"  parameterType="String"  resultMap="photoResult">
+		SELECT *
+		FROM photo
+	 	WHERE email=#{email}
+		ORDER BY p_year desc, p_month asc
+	</select>
+	
+	<delete id="deletePhoto" parameterType="Int">
+		DELETE  
+		FROM photo
+		WHERE seq_pKey=#{pKey}
+	</delete>
+	
+	<!-- hash를 위한 사진 경로 찾기 -->
+	<select id="selectPhotoPath" parameterType="Integer" resultType="String">
+		select p_path from photo where seq_pkey=#{pKey}
+	</select>
+	
+</mapper>

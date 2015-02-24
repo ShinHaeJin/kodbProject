@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="hashvideo">
+	<resultMap type="hashVideoDTO" id="hashvideoResult">
+		<result column="seq_hvkey" property="hvKey" />
+		<result column="hv_name" property="hvName" />
+		<result column="v_key" property="vKey" />
+		<result column="email" property="email"/>
+	</resultMap>
+
+	<insert id="insertHash" parameterType="hashVideoDTO">
+		insert into hashvideo values(HASHVIDEO_SQ.NEXTVAL, #{hvName}, #{vKey}, #{email})
+	</insert>
+	
+	<select id="selectHashTag" parameterType="hashVideoDTO" resultType="Integer">
+		select v_key from hashvideo where hv_name=#{hvName} and email=#{email}
+	</select>
+</mapper>

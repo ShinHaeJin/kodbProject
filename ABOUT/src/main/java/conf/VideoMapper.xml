@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="video">
+	<resultMap type="videoDTO" id="videoResult">
+		<result column="seq_vkey" property="vKey" />
+		<result column="v_name" property="vName" />
+		<result column="v_size" property="vSize" />
+		<result column="v_path" property="vPath" />
+		<result column="v_year" property="vYear" />
+		<result column="v_month" property="vMonth" />
+		<result column="v_day" property="vDay" />
+		<result column="v_comment" property="vComment" />
+		<result column="email" property="email" />
+	</resultMap>
+
+	<insert id="uploadVideo" parameterType="videoDTO">
+		insert into video values(VIDEO_SQ.NEXTVAL, #{vName}, #{vSize}, #{vPath}, #{vYear}, #{vMonth},#{vDay}, #{vComment}, #{email})
+	</insert>
+	
+	<select id="selectFileNum" parameterType="String" resultType="Integer">
+		select seq_vkey from video where v_name=#{vName}
+	</select>
+	
+	<!-- hash를 위한 영상 경로 찾기 -->
+	<select id="selectVideoPath" parameterType="Integer" resultType="String">
+		select v_path from video where seq_vkey=#{vKey}
+	</select>
+	
+	<select id="selectVideoByMonth" parameterType="String" resultMap="videoResult">
+		SELECT *
+		FROM video
+		WHERE v_month=#{vMonth} 
+		ORDER BY v_month asc, v_year desc
+	</select>
+	
+	<select id="selectVideoByYear" parameterType="String" resultMap="videoResult">
+		SELECT *
+		FROM video
+		WHERE v_year=#{vYear}
+		ORDER BY v_year desc, v_month asc
+	</select>
+	
+	<select id="selectVideoByYearMoth" parameterType="photoDTO" resultMap="videoResult">
+		SELECT *
+		FROM video
+		WHERE v_year=#{vYear} and v_month=#{vMonth}
+		ORDER BY v_day
+	</select>
+	
+	<select id="selectVideoByMonthOne" parameterType="String" resultMap="videoResult">
+		SELECT v_path, v_year, v_month
+		FROM video
+		WHERE seq_vKey in
+		(SELECT MAX(seq_vKey)
+		FROM video
+		GROUP BY v_year, v_month)
+		ORDER BY v_year desc, v_month asc
+	</select>
+	
+	<select id="selectAllVideo"  parameterType="String"  resultMap="videoResult">
+		SELECT *
+		FROM video
+	 	WHERE email=#{email}
+		ORDER BY v_year desc, v_month asc
+	</select>
+	
+	
+</mapper>

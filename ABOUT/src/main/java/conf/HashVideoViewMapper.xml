@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="hashvideoview">
+	<resultMap type="hashVideoViewDTO" id="videoviewResult">
+	<result column="email" property="email"/>
+	<result column="v_path" property="path"/>
+	<result column="v_year" property="year"/>
+	<result column="v_month" property="month"/>
+	<result column="v_day" property="day"/>
+	<result column="v_comment" property="comment"/>
+	<result column="hv_name" property="hash"/>
+	</resultMap>	
+
+	<select id="selectHashTag" parameterType="hashVideoViewDTO" resultMap="videoviewResult">
+		select * from video_hash_view where email=#{email} and hv_name=#{hash}
+	</select>
+</mapper>

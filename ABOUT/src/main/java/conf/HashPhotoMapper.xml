@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="hashphoto">
+	<resultMap type="hashPhotoDTO" id="hashphotoResult">
+		<result column="seq_hpkey" property="hpKey" />
+		<result column="hp_name" property="hpName" />
+		<result column="p_key" property="pKey" />
+		<result column="email" property="email"/>
+	</resultMap>
+
+	<insert id="insertHash" parameterType="hashPhotoDTO">
+		insert into hashphoto values(HASHPHOTO_SQ.NEXTVAL, #{hpName}, #{pKey}, #{email})
+	</insert>
+	
+	<select id="selectHashTag" parameterType="String" resultType="Integer">
+		select p_key from hashphoto where hp_name=#{hpName}
+	</select>
+</mapper>

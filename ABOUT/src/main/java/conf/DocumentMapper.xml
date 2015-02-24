@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="document">
+	<resultMap type="documentDTO" id="documentResult">
+		<result column="seq_dkey" property="dKey" />
+		<result column="d_name" property="dName" />
+		<result column="d_size" property="dSize" />
+		<result column="d_path" property="dPath" />
+		<result column="d_comment" property="dComment" />
+	</resultMap>
+
+	<insert id="uploadDocument" parameterType="documentDTO">
+		insert into document values(DOCUMENT_SQ.NEXTVAL, #{dName}, #{dSize}, #{dPath}, #{dComment})
+	</insert>
+</mapper>
